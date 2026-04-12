@@ -1,9 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function App() {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState("");
   const [transactions, setTransactions] = useState([]);
+
+  // load data from localStorage
+  useEffect(() => {
+    const savedData = localStorage.getItem("transactions");
+
+    if (savedData) {
+      setTransactions(JSON.parse(savedData));
+    }
+  }, []);
+
+  // save data to localStorage
+  useEffect(() => {
+    localStorage.setItem("transactions", JSON.stringify(transactions));
+  }, [transactions]);
 
   const addTransaction = () => {
     if (text === "" || amount === "") {
