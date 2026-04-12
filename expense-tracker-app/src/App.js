@@ -22,7 +22,12 @@ function App() {
     setAmount("");
   };
 
-  // ---- CALCULATIONS ----
+  const deleteTransaction = (index) => {
+    const updatedList = transactions.filter((item, i) => i !== index);
+    setTransactions(updatedList);
+  };
+
+  // calculations
   let balance = 0;
   let income = 0;
   let expense = 0;
@@ -38,13 +43,12 @@ function App() {
   }
 
   return (
-    <div>
+    <div style={{ textAlign: "center", marginTop: "40px" }}>
       <h1>Expense Tracker</h1>
 
+      <h3>Income: ₹{income}</h3>
+      <h3>Expense: ₹{expense}</h3>
       <h3>Balance: ₹{balance}</h3>
-
-      <h4>Income: ₹{income}</h4>
-      <h4>Expense: ₹{expense}</h4>
 
       <input
         type="text"
@@ -56,7 +60,7 @@ function App() {
 
       <input
         type="number"
-        placeholder="Enter amount (negative for expense)"
+        placeholder="Enter amount"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
       />
@@ -66,11 +70,24 @@ function App() {
 
       <h2>Transactions</h2>
 
-      <ul>
+      <ul style={{ listStyle: "none", padding: 0 }}>
         {transactions.map((item, i) => {
           return (
-            <li key={i}>
+            <li
+              key={i}
+              style={{
+                margin: "10px",
+                color: item.amount < 0 ? "red" : "green"
+              }}
+            >
               {item.text} - ₹{item.amount}
+
+              <button
+                onClick={() => deleteTransaction(i)}
+                style={{ marginLeft: "10px" }}
+              >
+                Delete
+              </button>
             </li>
           );
         })}
