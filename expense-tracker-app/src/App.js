@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 function App() {
   const [text, setText] = useState("");
@@ -7,26 +7,44 @@ function App() {
 
   const addTransaction = () => {
     if (text === "" || amount === "") {
-      alert("Please enter all fields");
+      alert("Enter all fields");
       return;
     }
 
-    const newTransaction = {
+    const newItem = {
       text: text,
-      amount: amount
+      amount: Number(amount)
     };
 
-    setTransactions([...transactions, newTransaction]);
+    setTransactions([...transactions, newItem]);
 
     setText("");
     setAmount("");
   };
 
+  // ---- CALCULATIONS ----
+  let balance = 0;
+  let income = 0;
+  let expense = 0;
+
+  for (let i = 0; i < transactions.length; i++) {
+    balance = balance + transactions[i].amount;
+
+    if (transactions[i].amount > 0) {
+      income = income + transactions[i].amount;
+    } else {
+      expense = expense + transactions[i].amount;
+    }
+  }
+
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div>
       <h1>Expense Tracker</h1>
 
-      <h3>Balance: ₹0</h3>
+      <h3>Balance: ₹{balance}</h3>
+
+      <h4>Income: ₹{income}</h4>
+      <h4>Expense: ₹{expense}</h4>
 
       <input
         type="text"
@@ -34,26 +52,28 @@ function App() {
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
+      <br /><br />
 
       <input
         type="number"
-        placeholder="Enter amount"
+        placeholder="Enter amount (negative for expense)"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
       />
-
       <br /><br />
 
-      <button onClick={addTransaction}>Add Transaction</button>
+      <button onClick={addTransaction}>Add</button>
 
       <h2>Transactions</h2>
 
       <ul>
-        {transactions.map((t, index) => (
-          <li key={index}>
-            {t.text} - ₹{t.amount}
-          </li>
-        ))}
+        {transactions.map((item, i) => {
+          return (
+            <li key={i}>
+              {item.text} - ₹{item.amount}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
