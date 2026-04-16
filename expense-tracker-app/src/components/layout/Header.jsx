@@ -9,6 +9,8 @@ import { exportDashboardAsPDF } from '../../services/pdfService';
 import ThemeToggle from '../theme/ThemeToggle';
 import Sidebar from './Sidebar';
 import SyncIndicator from '../shared/SyncIndicator';
+import logoUrl from '../../assets/logo.png';
+import { Wallet } from 'lucide-react';
 
 const Header = ({ variant = 'dashboard' }) => {
   const { isAuthenticated } = useAuth();
@@ -33,10 +35,10 @@ const Header = ({ variant = 'dashboard' }) => {
   };
 
   const navIconClass = (path) => `
-    p-2 rounded-xl transition-all duration-200 cursor-pointer
+    p-2 rounded-xl transition-all duration-200 ease-in-out hover:scale-110 active:scale-95 cursor-pointer flex items-center justify-center
     ${isActive(path)
       ? 'bg-theme-primary text-white shadow-glow'
-      : 'text-theme-text-secondary hover:text-theme-primary hover:bg-theme-primary-light'
+      : 'text-theme-text-secondary hover:text-white hover:bg-white/10'
     }
   `;
 
@@ -47,18 +49,14 @@ const Header = ({ variant = 'dashboard' }) => {
         animate={{ y: 0, opacity: 1 }}
         className="sticky top-0 z-40 border-b border-theme-border bg-theme-card/80 backdrop-blur-md"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-4 flex items-center justify-between">
           {/* Logo */}
-          <Link to={ROUTES.LANDING} className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl flex items-center justify-center text-lg"
-              style={{ background: 'var(--gradient-primary)' }}>
-              💰
-            </div>
-            <span className="text-xl font-bold gradient-text">{APP_NAME}</span>
+          <Link to={ROUTES.LANDING} className="flex items-center">
+            <Wallet className="w-5 h-5 text-theme-text-secondary hover:text-white transition-colors duration-200" strokeWidth={1.5} />
           </Link>
 
           {/* Nav icons */}
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-4">
             <button
               onClick={() => navigate(ROUTES.LANDING)}
               className={navIconClass(ROUTES.LANDING)}
@@ -76,15 +74,18 @@ const Header = ({ variant = 'dashboard' }) => {
               </button>
             )}
             <ThemeToggle />
-            <a
-              href="#about"
-              className="p-2 rounded-xl text-theme-text-secondary hover:text-theme-primary hover:bg-theme-primary-light transition-all duration-200"
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="p-2 rounded-xl text-theme-text-secondary hover:text-white hover:bg-white/10 transition-all duration-200 ease-in-out hover:scale-110 active:scale-95 cursor-pointer flex items-center justify-center"
               title="About"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-            </a>
+            </button>
           </div>
         </div>
       </motion.header>
@@ -110,12 +111,9 @@ const Header = ({ variant = 'dashboard' }) => {
           </button>
 
           {/* Center: Logo */}
-          <Link to={ROUTES.HOME} className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center text-base"
-              style={{ background: 'var(--gradient-primary)' }}>
-              💰
-            </div>
-            <span className="text-lg font-bold gradient-text hidden sm:inline">{APP_NAME}</span>
+          <Link to={ROUTES.HOME} className="flex items-center gap-2 group">
+            <img src={logoUrl} alt={`${APP_NAME} Logo`} className="w-8 h-8 object-contain group-hover:scale-105 transition-transform duration-300 ease-in-out drop-shadow" />
+            <span className="text-lg font-bold gradient-text hidden sm:inline group-hover:opacity-90 transition-opacity duration-300">{APP_NAME}</span>
           </Link>
 
           {/* Right: Nav icons + Sync */}
