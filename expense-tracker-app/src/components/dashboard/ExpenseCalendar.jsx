@@ -107,7 +107,7 @@ const ExpenseCalendar = () => {
                     ? `rgba(var(--color-primary) / ${intensity})`
                     : 'transparent',
                   background: day.spending > 0 && day.isCurrentMonth
-                    ? `rgba(244, 63, 94, ${intensity * 0.3})`
+                    ? `rgba(254, 151, 185, ${intensity * 0.4})`
                     : day.isToday
                     ? 'var(--color-primary-light)'
                     : 'transparent',
@@ -141,7 +141,7 @@ const ExpenseCalendar = () => {
           <div
             key={level}
             className="w-3 h-3 rounded-sm"
-            style={{ background: `rgba(244, 63, 94, ${level * 0.3})` }}
+            style={{ background: `rgba(254, 151, 185, ${level * 0.4})` }}
           />
         ))}
         <span className="text-xs text-theme-text-muted">More</span>

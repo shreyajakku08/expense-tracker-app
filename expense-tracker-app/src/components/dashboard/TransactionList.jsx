@@ -86,14 +86,14 @@ const TransactionList = () => {
                 </div>
 
                 {/* Amount */}
-                <div className={`text-sm font-bold flex-shrink-0 ${isExpense ? 'text-red-400' : 'text-emerald-400'}`}>
+                <div className={`text-sm font-bold flex-shrink-0 ${isExpense ? 'text-[#fe97b9]' : 'text-[#34d399]'}`}>
                   {isExpense ? '-' : '+'}{formatCurrency(t.amount)}
                 </div>
 
                 {/* Delete button */}
                 <button
                   onClick={() => handleDelete(t.id)}
-                  className="p-1.5 rounded-lg text-theme-text-muted opacity-0 group-hover:opacity-100 hover:text-red-400 hover:bg-red-500/10 transition-all flex-shrink-0"
+                  className="p-1.5 rounded-lg text-theme-text-muted opacity-0 group-hover:opacity-100 hover:text-[#ff6e84] hover:bg-[#ff6e84]/10 transition-all flex-shrink-0"
                   title="Delete"
                 >
                   <HiTrash className="w-4 h-4" />
