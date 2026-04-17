@@ -166,8 +166,8 @@ const ProfilePage = () => {
           </Card>
 
           {/* Danger zone */}
-          <Card className="border-red-500/20">
-            <h3 className="text-sm font-semibold text-red-400 mb-2">Danger Zone</h3>
+          <Card className="border-[#ff6e84]/20">
+            <h3 className="text-sm font-semibold text-[#ff6e84] mb-2">Danger Zone</h3>
             <p className="text-sm text-theme-text-muted mb-4">
               Permanently delete your account and all associated data. This action cannot be undone.
             </p>

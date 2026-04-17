@@ -150,7 +150,7 @@ const AnalyticsPage = () => {
                         />
                         <Tooltip content={<CustomTooltip />} cursor={{ fill: 'var(--color-primary-light)', opacity: 0.3 }} />
                         <Bar dataKey="earnings" name="Earnings" fill="#34d399" radius={[6, 6, 0, 0]} maxBarSize={32} />
-                        <Bar dataKey="expenses" name="Expenses" fill="#f87171" radius={[6, 6, 0, 0]} maxBarSize={32} />
+                        <Bar dataKey="expenses" name="Expenses" fill="#fe97b9" radius={[6, 6, 0, 0]} maxBarSize={32} />
                       </BarChart>
                     </ResponsiveContainer>
                   </div>
@@ -235,7 +235,7 @@ const AnalyticsPage = () => {
 
                   <div className="p-4 rounded-xl bg-theme-bg-secondary">
                     <p className="text-xs text-theme-text-muted mb-1">Savings Rate</p>
-                    <p className={`text-lg font-bold ${insights.savingsRate >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                    <p className={`text-lg font-bold ${insights.savingsRate >= 0 ? 'text-[#34d399]' : 'text-[#ff6e84]'}`}>
                       {insights.savingsRate.toFixed(1)}%
                     </p>
                     <p className="text-xs text-theme-text-muted">of earnings saved</p>
