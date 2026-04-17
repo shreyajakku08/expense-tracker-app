@@ -23,22 +23,22 @@ const SpendLimitCard = () => {
     : 0;
 
   const getStatusColor = () => {
-    if (spentPercentage < 50) return 'text-emerald-400';
-    if (spentPercentage < 75) return 'text-amber-400';
-    return 'text-red-400';
+    if (spentPercentage < 50) return 'text-[#34d399]';
+    if (spentPercentage < 75) return 'text-[#fbbf24]';
+    return 'text-[#ff6e84]';
   };
 
   const getProgressColor = () => {
-    if (spentPercentage < 50) return 'bg-emerald-400';
-    if (spentPercentage < 75) return 'bg-amber-400';
-    return 'bg-red-400';
+    if (spentPercentage < 50) return 'bg-[#34d399]';
+    if (spentPercentage < 75) return 'bg-[#fbbf24]';
+    return 'bg-[#ff6e84]';
   };
 
   return (
-    <Card className="border-l-4 border-l-amber-400">
+    <Card className="border-l-4 border-l-[#fbbf24]">
       <div className="flex items-center justify-between mb-3">
         <p className="text-sm font-medium text-theme-text-secondary">Daily Spend Limit</p>
-        <div className="p-2 rounded-xl bg-amber-500/15 text-amber-400">
+        <div className="p-2 rounded-xl bg-[#fbbf24]/15 text-[#fbbf24]">
           ⏳
         </div>
       </div>

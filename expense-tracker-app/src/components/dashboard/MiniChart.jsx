@@ -29,11 +29,11 @@ const MiniChart = () => {
         <p className="text-sm font-medium text-theme-text-secondary">Weekly Overview</p>
         <div className="flex items-center gap-3 text-xs">
           <span className="flex items-center gap-1">
-            <span className="w-2.5 h-2.5 rounded-sm bg-emerald-400" />
+            <span className="w-2.5 h-2.5 rounded-sm bg-[#34d399]" />
             Earnings
           </span>
           <span className="flex items-center gap-1">
-            <span className="w-2.5 h-2.5 rounded-sm bg-red-400" />
+            <span className="w-2.5 h-2.5 rounded-sm bg-[#fe97b9]" />
             Expenses
           </span>
         </div>
@@ -58,7 +58,7 @@ const MiniChart = () => {
             />
             <Tooltip content={<CustomTooltip />} cursor={{ fill: 'var(--color-primary-light)', opacity: 0.3 }} />
             <Bar dataKey="earnings" name="Earnings" fill="#34d399" radius={[6, 6, 0, 0]} maxBarSize={28} />
-            <Bar dataKey="expenses" name="Expenses" fill="#f87171" radius={[6, 6, 0, 0]} maxBarSize={28} />
+            <Bar dataKey="expenses" name="Expenses" fill="#fe97b9" radius={[6, 6, 0, 0]} maxBarSize={28} />
           </BarChart>
         </ResponsiveContainer>
       </div>

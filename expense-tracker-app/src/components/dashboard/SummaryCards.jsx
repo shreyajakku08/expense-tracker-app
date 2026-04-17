@@ -23,25 +23,25 @@ const SummaryCards = () => {
       title: 'Total Earnings',
       value: summary.totalEarnings,
       icon: <HiTrendingUp className="w-6 h-6" />,
-      iconBg: 'bg-emerald-500/15',
-      iconColor: 'text-emerald-400',
-      borderColor: 'border-l-emerald-400',
+      iconBg: 'bg-[#34d399]/15',
+      iconColor: 'text-[#34d399]',
+      borderColor: 'border-l-[#34d399]',
     },
     {
       title: 'Total Expenses',
       value: summary.totalExpenses,
       icon: <HiTrendingDown className="w-6 h-6" />,
-      iconBg: 'bg-red-500/15',
-      iconColor: 'text-red-400',
-      borderColor: 'border-l-red-400',
+      iconBg: 'bg-[#fe97b9]/15',
+      iconColor: 'text-[#fe97b9]',
+      borderColor: 'border-l-[#fe97b9]',
     },
     {
       title: 'Balance',
       value: summary.balance,
       icon: <HiCash className="w-6 h-6" />,
-      iconBg: 'bg-blue-500/15',
-      iconColor: 'text-blue-400',
-      borderColor: 'border-l-blue-400',
+      iconBg: 'bg-[#a0e0ff]/15',
+      iconColor: 'text-[#a0e0ff]',
+      borderColor: 'border-l-[#a0e0ff]',
       isBalance: true,
     },
   ];
@@ -70,8 +70,8 @@ const SummaryCards = () => {
             <div className={`text-2xl font-bold ${
               card.isBalance
                 ? summary.balance >= 0
-                  ? 'text-emerald-400'
-                  : 'text-red-400'
+                  ? 'text-[#34d399]'
+                  : 'text-[#ff6e84]'
                 : 'text-theme-text'
             }`}>
               <AnimatedCounter
